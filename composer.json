@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Marcorombach\\LivewireConfirmModal\\": "src/",
-            "Marcorombach\\LivewireConfirmModal\\Database\\Factories\\": "database/factories/"
+            "Marcorombach\\LivewireConfirmModal\\": "src/"
         }
     },
     "autoload-dev": {
@@ -74,10 +73,7 @@
         "laravel": {
             "providers": [
                 "Marcorombach\\LivewireConfirmModal\\LivewireConfirmModalServiceProvider"
-            ],
-            "aliases": {
-                "LivewireConfirmModal": "Marcorombach\\LivewireConfirmModal\\Facades\\LivewireConfirmModal"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

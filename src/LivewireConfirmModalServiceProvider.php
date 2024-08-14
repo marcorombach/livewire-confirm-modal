@@ -15,6 +15,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('livewire-confirm-modal')
+            ->hasAssets()
             ->hasConfigFile()
             ->hasViews();
     }
