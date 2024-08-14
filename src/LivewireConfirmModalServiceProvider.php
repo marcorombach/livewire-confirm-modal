@@ -21,9 +21,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        Route::get('_filepond/scripts', function () {
+        Route::get('_livewire-confirm-modal/scripts', function () {
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
-        })->name('livewire-filepond.scripts');
+        })->name('livewire-confirm-modal.scripts');
 
 
         Blade::directive('livewireConfirmModal', function () {
@@ -32,7 +32,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
             $scripts = [];
 
-            $fullScriptPath = route('livewire-filepond.scripts');
+            $fullScriptPath = route('livewire-confirm-modal.scripts');
 
             if (is_file(__DIR__.'/../resources/hot')) {
                 $url = rtrim(file_get_contents(__DIR__.'/../resources/hot'));
