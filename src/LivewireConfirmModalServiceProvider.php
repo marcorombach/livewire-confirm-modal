@@ -6,6 +6,7 @@ use Composer\InstalledVersions;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Drawer\Utils;
+use Marcorombach\LivewireConfirmModal\Components\Modal;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -26,7 +27,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
         })->name('livewire-confirm-modal.scripts');
 
-        Blade::component('livewire-confirm-modal::modal', 'livewire-confirm-modal');
+        Blade::component('livewire-confirm-modal', Modal::class);
 
         Blade::directive('livewireConfirmModal', function () {
 
