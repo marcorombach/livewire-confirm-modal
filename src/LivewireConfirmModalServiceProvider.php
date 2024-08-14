@@ -6,8 +6,7 @@ use Composer\InstalledVersions;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Drawer\Utils;
-use Livewire\Livewire;
-use Marcorombach\LivewireConfirmModal\Components\Modal;
+use Marcorombach\LivewireConfirmModal\View\Components\Modal;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -22,6 +21,13 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             ->hasViews();
     }
 
+    public function boot()
+    {
+        // ... other things
+        $this->loadViewComponentsAs('livewire-confirm', [
+            Modal::class,
+        ]);
+    }
 
     public function packageBooted(): void
     {
