@@ -5,10 +5,12 @@ document.addEventListener('alpine:init', () => {
 
         toggle(){
             this.show = !this.show;
+            console.log("Show? " + this.show);
         },
 
         setTitle(title) {
             this.title = title
+            console.log("Title? " + this.title);
         }
     })
 })
