@@ -9,7 +9,27 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     // directive.modifiers = ['prevent']
     // directive.expression = "deletePost(1)"
 
+
+
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('confirmModal', {
+            show: false,
+            title: 'default',
+
+            toggle(){
+                this.show = !this.show;
+            },
+
+            setTitle(title) {
+                this.title = title
+            }
+        })
+    })
+
     let onClick = e => {
+        Alpine.store('confirmModal').setTitle('Test');
+        Alpine.store('confirmModal').toggle();
         if (! confirm(content)) {
             e.preventDefault()
             e.stopImmediatePropagation()
