@@ -26,27 +26,33 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
         })->name('livewire-confirm-modal.scripts');
 
+        Blade::component('livewire-confirm-modal::modal', 'livewire-confirm-modal');
 
         Blade::directive('livewireConfirmModal', function () {
 
             $version = InstalledVersions::getPrettyVersion('marcorombach/livewire-confirm-modal');
 
-            $scripts = [];
+            $content = [];
+
+            $content[] = <<<Blade
+                <x-livewire-confirm-modal></x-livewire-confirm-modal>
+            Blade;
+
 
             $fullScriptPath = route('livewire-confirm-modal.scripts');
 
             if (is_file(__DIR__.'/../resources/hot')) {
                 $url = rtrim(file_get_contents(__DIR__.'/../resources/hot'));
 
-                $scripts[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/resources/js/livewire-confirm-modal.js");
-                $scripts[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/@vite/client");
+                $content[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/resources/js/livewire-confirm-modal.js");
+                $content[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/@vite/client");
             } else {
-                $scripts[] = <<<HTML
+                $content[] = <<<HTML
                     <script type="module" src="{$fullScriptPath}?v={$version}" data-navigate-once defer data-navigate-track></script>
                 HTML;
             }
 
-            return implode("\n", $scripts);
+            return implode("\n", $content);
         });
     }
 }
