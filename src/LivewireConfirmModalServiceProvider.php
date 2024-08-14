@@ -36,6 +36,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
             $content[] = <<<Blade
                 <x-livewire-confirm-modal></x-livewire-confirm-modal>
+                <x-livewire-confirm-modal:livewire-confirm-modal></x-livewire-confirm-modal:livewire-confirm-modal>
             Blade;
 
 
