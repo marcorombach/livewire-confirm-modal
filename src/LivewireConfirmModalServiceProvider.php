@@ -29,18 +29,14 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
         })->name('livewire-confirm-modal.scripts');
 
-        Livewire::component('livewire-confirm-modal', Modal::class);
+
+        Blade::component('modal', Modal::class);
 
         Blade::directive('livewireConfirmModal', function () {
 
             $version = InstalledVersions::getPrettyVersion('marcorombach/livewire-confirm-modal');
 
             $content = [];
-
-            $content[] = <<<Blade
-                <x-livewire-confirm-modal></x-livewire-confirm-modal>
-                <x-livewire-confirm-modal:livewire-confirm-modal></x-livewire-confirm-modal:livewire-confirm-modal>
-            Blade;
 
 
             $fullScriptPath = route('livewire-confirm-modal.scripts');
