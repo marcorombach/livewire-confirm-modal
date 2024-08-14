@@ -1,6 +1,6 @@
 <?php
 
-namespace Marcorombach\LivewireConfirmModal\View\Components;
+namespace Marcorombach\LivewireConfirmModal\Components;
 
 use Illuminate\View\Component;
 

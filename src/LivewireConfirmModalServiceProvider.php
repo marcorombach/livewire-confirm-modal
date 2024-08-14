@@ -3,10 +3,10 @@
 namespace Marcorombach\LivewireConfirmModal;
 
 use Composer\InstalledVersions;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Livewire\Drawer\Utils;
-use Marcorombach\LivewireConfirmModal\View\Components\Modal;
+use Marcorombach\LivewireConfirmModal\Components\Modal;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,18 +16,12 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('livewire-confirm-modal')
+            ->hasViewComponents('livewire-confirm', Modal::class)
             ->hasAssets()
             ->hasConfigFile()
             ->hasViews();
     }
 
-    public function boot()
-    {
-        // ... other things
-        $this->loadViewComponentsAs('livewire-confirm', [
-            Modal::class,
-        ]);
-    }
 
     public function packageBooted(): void
     {
@@ -35,8 +29,6 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
         })->name('livewire-confirm-modal.scripts');
 
-
-        Blade::component('modal', Modal::class);
 
         Blade::directive('livewireConfirmModal', function () {
 
