@@ -22,10 +22,6 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             ->hasViews();
     }
 
-    public function boot(): void
-    {
-        Livewire::component('livewire-confirm-modal', Modal::class);
-    }
 
     public function packageBooted(): void
     {
@@ -33,7 +29,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
         })->name('livewire-confirm-modal.scripts');
 
-
+        Livewire::component('livewire-confirm-modal', Modal::class);
 
         Blade::directive('livewireConfirmModal', function () {
 
