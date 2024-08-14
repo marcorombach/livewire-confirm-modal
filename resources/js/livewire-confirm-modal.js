@@ -32,10 +32,10 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     let onClick = e => {
         Alpine.store('confirmModal').setTitle('Test');
         Alpine.store('confirmModal').toggle();
-        if (! confirm(content)) {
+        /*if (! confirm(content)) {
             e.preventDefault()
             e.stopImmediatePropagation()
-        }
+        }*/
     }
 
     el.addEventListener('click', onClick, { capture: true })
