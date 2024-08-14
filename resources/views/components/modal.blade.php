@@ -9,7 +9,7 @@
              x-transition:leave-end="opacity-0"
              @click="$store.confirmModal.toggle()" class="absolute inset-0 w-full h-full bg-black bg-opacity-40"></div>
         <div x-show="$store.confirmModal.show"
-             x-trap.inert.noscroll="modalOpen"
+             x-trap.inert.noscroll="$store.confirmModal.show"
              x-transition:enter="ease-out duration-100"
              x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
              x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
