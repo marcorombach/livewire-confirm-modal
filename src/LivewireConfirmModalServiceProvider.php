@@ -18,6 +18,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             ->name('livewire-confirm-modal')
             ->hasViewComponents('livewire-confirm', Modal::class)
             ->hasAssets()
+            ->hasTranslations()
             ->hasConfigFile()
             ->hasViews();
     }
