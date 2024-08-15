@@ -27,15 +27,30 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     // directive.modifiers = ['prevent']
     // directive.expression = "deletePost(1)"
 
+    const newConfirm = () => {
+        return new Promise((complete, failed)=>{
 
+            document.getElementById("lvcm-ok").addEventListener("click", function(){
+                Alpine.store('confirmModal').toggle();
+                complete(true);
+            });
+
+            document.getElementById("lvcm-cancel").addEventListener("click", function(){
+                Alpine.store('confirmModal').toggle();
+                complete(false);
+            });
+
+        });
+    }
 
     let onClick = e => {
         Alpine.store('confirmModal').setTitle('Test');
         Alpine.store('confirmModal').toggle();
-        /*if (! confirm(content)) {
+
+        if (! newConfirm()) {
             e.preventDefault()
             e.stopImmediatePropagation()
-        }*/
+        }
     }
 
     el.addEventListener('click', onClick, { capture: true })
