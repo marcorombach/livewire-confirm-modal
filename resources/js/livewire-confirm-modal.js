@@ -27,6 +27,10 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     // directive.modifiers = ['prevent']
     // directive.expression = "deletePost(1)"
 
+    console.log(el);
+    console.log(directive);
+    console.log(component);
+
     const newConfirm = () => {
         return new Promise((complete, failed)=>{
 
