@@ -42,7 +42,10 @@ function parseMethod(rawMethod){
 
 
 Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
-    let content =  JSON.parse(directive.expression);
+    let content =  directive.expression;
+
+    let title = content.split('|')[0];
+    let description = content.split('|')[1];
 
     console.log(el);
     console.log(el.getAttribute('wire:click'));
@@ -69,7 +72,8 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
         e.preventDefault()
         e.stopImmediatePropagation()
 
-        Alpine.store('confirmModal').setTitle(content.title);
+        Alpine.store('confirmModal').setTitle(title);
+        Alpine.store('confirmModal').setDescription(description);
         Alpine.store('confirmModal').present();
 
         if (!await newConfirm()) {
