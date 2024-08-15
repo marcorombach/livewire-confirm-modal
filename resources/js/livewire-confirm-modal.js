@@ -23,7 +23,7 @@ document.addEventListener('alpine:init', () => {
 })
 
 function parseMethod(rawMethod){
-    const regex = /,(?=[^()]*\))/g
+    const regex = /,(?![^'"]*['"])/g
     let method = rawMethod
     let params = []
     method = rawMethod.split('(')[0];
