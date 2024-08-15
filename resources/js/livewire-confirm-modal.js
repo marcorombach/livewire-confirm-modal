@@ -55,12 +55,12 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     const newConfirm = () => {
         return new Promise((complete, failed)=>{
 
-            document.getElementById("lvcm-ok").addEventListener("click", function(){
+            document.getElementById("lvcm-ok-btn").addEventListener("click", function(){
                 Alpine.store('confirmModal').hide();
                 complete(true);
             });
 
-            document.getElementById("lvcm-cancel").addEventListener("click", function(){
+            document.getElementById("lvcm-cancel-btn").addEventListener("click", function(){
                 Alpine.store('confirmModal').hide();
                 complete(false);
             });

@@ -1,19 +1,13 @@
-# This is my package livewire-confirm-modal
+# Livewire Confirm-Modal
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marcorombach/livewire-confirm-modal.svg?style=flat-square)](https://packagist.org/packages/marcorombach/livewire-confirm-modal)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/marcorombach/livewire-confirm-modal/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/marcorombach/livewire-confirm-modal/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/marcorombach/livewire-confirm-modal/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/marcorombach/livewire-confirm-modal/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/marcorombach/livewire-confirm-modal.svg?style=flat-square)](https://packagist.org/packages/marcorombach/livewire-confirm-modal)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This is a simple package aiming to provide a Livewire directive like ``wire:confirm`` but without using the default javascript ``confirm()`` function.
+This is useful if you need the same style for the confirm box across different browser.
+It's also possible to apply your own style by changing the view.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/livewire-confirm-modal.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/livewire-confirm-modal)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+By default this package uses TailwindCSS to style the modal. The look of the modal was inspired by the fantastic components of [Pines UI](https://devdojo.com/pines).
 
 ## Installation
 
@@ -23,56 +17,39 @@ You can install the package via composer:
 composer require marcorombach/livewire-confirm-modal
 ```
 
-You can publish and run the migrations with:
+You need to add the following to your ```tailwind.config.js```
 
-```bash
-php artisan vendor:publish --tag="livewire-confirm-modal-migrations"
-php artisan migrate
+```javascript
+"./vendor/marcorombach/livewire-confirm-modal/resources/views/components/*.php"
+```
+It should look something like this:
+
+```javascript
+content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    ...
+    "./vendor/marcorombach/livewire-confirm-modal/resources/views/components/*.php",
+],
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="livewire-confirm-modal-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
+Optionally, you can publish the view using
 
 ```bash
 php artisan vendor:publish --tag="livewire-confirm-modal-views"
 ```
 
+You should be careful changing the view, especially when touching alpine directives.
+
 ## Usage
 
-```php
-$livewireConfirmModal = new Marcorombach\LivewireConfirmModal();
-echo $livewireConfirmModal->echoPhrase('Hello, Marcorombach!');
+```html
+<button wire:confirm-modal="title|description" wire:click="doSomething(1,2)">
+    Test
+</button>
 ```
-
-## Testing
-
-```bash
-composer test
-```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Replace ``title`` and ``description`` with what you want the confirm modal to display.
+Now a modal is shown everytime the button is clicked. It will prevent ``wire:click`` from executing until the continue button in the modal is clicked.
 
 ## Credits
 
