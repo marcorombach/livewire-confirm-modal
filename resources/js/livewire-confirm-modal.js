@@ -74,10 +74,9 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
 
         }else{
             console.log('ok');
-            debugger;
             let methodObject = parseMethod(el.getAttribute('wire:click'));
+            console.log(methodObject);
             component.$wire[methodObject.method](methodObject.params);
-            debugger;
         }
     }
 
