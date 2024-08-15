@@ -32,24 +32,29 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
 
             document.getElementById("lvcm-ok").addEventListener("click", function(){
                 Alpine.store('confirmModal').toggle();
+                console.log('ok onclick');
                 complete(true);
             });
 
             document.getElementById("lvcm-cancel").addEventListener("click", function(){
                 Alpine.store('confirmModal').toggle();
+                console.log('cancel onclick');
                 complete(false);
             });
 
         });
     }
 
-    let onClick = e => {
+    let onClick = async e => {
         Alpine.store('confirmModal').setTitle('Test');
         Alpine.store('confirmModal').toggle();
 
-        if (! newConfirm()) {
+        if (!await newConfirm()) {
+            console.log('cancel');
             e.preventDefault()
             e.stopImmediatePropagation()
+        }else{
+            console.log('ok');
         }
     }
 
