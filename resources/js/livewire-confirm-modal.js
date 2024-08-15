@@ -16,30 +16,15 @@ document.addEventListener('alpine:init', () => {
 })
 
 function parseMethod(rawMethod){
+    const regex = /,(?=[^()]*\))/g
     let method = rawMethod
     let params = []
-    const methodAndParamString = method.match(/(.*?)\((.*)\)/s)
+    method = rawMethod.split('(')[0];
+    let paramString = rawMethod.split('(')[1].split(')')[0];
 
-    if (methodAndParamString) {
-        method = methodAndParamString[1]
+    params = paramString.split(regex);
 
-        // Use a function that returns it's arguments to parse and eval all params
-        // This "$event" is for use inside the livewire event handler.
-        let func = new Function('$event', `return (function () {
-                for (var l=arguments.length, p=new Array(l), k=0; k<l; k++) {
-                    p[k] = arguments[k];
-                }
-                return [].concat(p);
-            })(${methodAndParamString[2]})`)
-
-        params = func(this.eventContext)
-    }
-
-    return { method, params }
-}
-
-function getParams(element){
-
+    return { method: method, params: params }
 }
 
 
@@ -90,7 +75,8 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
         }else{
             console.log('ok');
             debugger;
-            component.$wire[el.getAttribute('wire:click')]();
+            let methodObject = parseMethod(el.getAttribute('wire:click'));
+            component.$wire[methodObject.method](methodObject.params);
             debugger;
         }
     }
