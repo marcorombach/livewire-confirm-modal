@@ -15,6 +15,33 @@ document.addEventListener('alpine:init', () => {
     })
 })
 
+function parseMethod(element){
+    let method = rawMethod
+    let params = []
+    const methodAndParamString = method.match(/(.*?)\((.*)\)/s)
+
+    if (methodAndParamString) {
+        method = methodAndParamString[1]
+
+        // Use a function that returns it's arguments to parse and eval all params
+        // This "$event" is for use inside the livewire event handler.
+        let func = new Function('$event', `return (function () {
+                for (var l=arguments.length, p=new Array(l), k=0; k<l; k++) {
+                    p[k] = arguments[k];
+                }
+                return [].concat(p);
+            })(${methodAndParamString[2]})`)
+
+        params = func(this.eventContext)
+    }
+
+    return { method, params }
+}
+
+function getParams(element){
+
+}
+
 
 Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     let content =  directive.expression
@@ -29,7 +56,7 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
 
     console.log(el);
     console.log(el.getAttribute('wire:click'));
-
+    console.log(parseMethod(el.getAttribute('wire:click')))
     console.log(component);
 
     const newConfirm = () => {
@@ -62,7 +89,9 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
 
         }else{
             console.log('ok');
-            component.$wire[el.getAttribute('wire:click')];
+            debugger;
+            component.$wire[el.getAttribute('wire:click')]();
+            debugger;
         }
     }
 
