@@ -68,7 +68,7 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
         if (await newConfirm()) {
             let methodObject = parseMethod(el.getAttribute('wire:click'));
             console.log(methodObject);
-            component.$wire[methodObject.method](methodObject.params);
+            component.$wire[methodObject.method](...methodObject.params);
         }
     }
 
