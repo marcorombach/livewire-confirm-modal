@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', () => {
     })
 })
 
-function parseMethod(element){
+function parseMethod(rawMethod){
     let method = rawMethod
     let params = []
     const methodAndParamString = method.match(/(.*?)\((.*)\)/s)
