@@ -30,7 +30,7 @@ function parseMethod(rawMethod){
     let paramString = rawMethod.split('(')[1].split(')')[0];
 
     params = paramString.split(regex);
-    params = params.map(str => str.replace(/^['"]|['"]$/g, ''));
+    params = params.map(str => str.replace(/^['"]|['"]$/g, '').trim());
 
     return { method: method, params: params }
 }
