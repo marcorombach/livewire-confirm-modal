@@ -4,9 +4,6 @@ document.addEventListener('alpine:init', () => {
         title: 'default',
         description: 'default',
 
-        toggle(){
-            this.show = !this.show;
-        },
         hide(){
             this.show = false;
         },
@@ -34,7 +31,6 @@ function parseMethod(rawMethod){
 
     return { method: method, params: params }
 }
-
 
 Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     let content =  directive.expression;

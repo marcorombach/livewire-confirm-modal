@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'continue' => 'Weiter',
-    'cancel' => 'Abbrechen',
+    'continue' => 'Continue',
+    'cancel' => 'Cancel',
 ];
