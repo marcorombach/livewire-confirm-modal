@@ -28,7 +28,8 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     // directive.expression = "deletePost(1)"
 
     console.log(el);
-    console.log(directive);
+    console.log(el.getAttribute('wire:click'));
+
     console.log(component);
 
     const newConfirm = () => {
