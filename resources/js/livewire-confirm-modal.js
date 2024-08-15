@@ -51,15 +51,18 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     }
 
     let onClick = async e => {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
         Alpine.store('confirmModal').setTitle('Test');
         Alpine.store('confirmModal').toggle();
 
         if (!await newConfirm()) {
             console.log('cancel');
-            e.preventDefault()
-            e.stopImmediatePropagation()
+
         }else{
             console.log('ok');
+            component.$wire[el.getAttribute('wire:click')];
         }
     }
 
