@@ -7,19 +7,15 @@ document.addEventListener('alpine:init', () => {
         toggle(){
             this.show = !this.show;
         },
-
         hide(){
             this.show = false;
         },
-
         present(){
             this.show = true;
         },
-
         setTitle(title) {
             this.title = title
         },
-
         setDescription(description) {
             this.description = description
         }
@@ -34,7 +30,6 @@ function parseMethod(rawMethod){
     let paramString = rawMethod.split('(')[1].split(')')[0];
 
     params = paramString.split(regex);
-
     params = params.map(str => str.replace(/^['"]|['"]$/g, ''));
 
     return { method: method, params: params }
@@ -46,11 +41,6 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
 
     let title = content.split('|')[0];
     let description = content.split('|')[1];
-
-    console.log(el);
-    console.log(el.getAttribute('wire:click'));
-    console.log(parseMethod(el.getAttribute('wire:click')))
-    console.log(component);
 
     const newConfirm = () => {
         return new Promise((complete, failed)=>{
@@ -64,7 +54,6 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
                 Alpine.store('confirmModal').hide();
                 complete(false);
             });
-
         });
     }
 
@@ -76,11 +65,7 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
         Alpine.store('confirmModal').setDescription(description);
         Alpine.store('confirmModal').present();
 
-        if (!await newConfirm()) {
-            console.log('cancel');
-
-        }else{
-            console.log('ok');
+        if (await newConfirm()) {
             let methodObject = parseMethod(el.getAttribute('wire:click'));
             console.log(methodObject);
             component.$wire[methodObject.method](methodObject.params);
