@@ -4,6 +4,9 @@
     "keywords": [
         "marcorombach",
         "laravel",
+        "livewire",
+        "wire:confirm",
+        "tailwind",
         "livewire-confirm-modal"
     ],
     "homepage": "https://github.com/marcorombach/livewire-confirm-modal",

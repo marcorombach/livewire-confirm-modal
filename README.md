@@ -9,6 +9,8 @@ It's also possible to apply your own style by changing the view.
 
 By default this package uses TailwindCSS to style the modal. The look of the modal was inspired by the fantastic components of [Pines UI](https://devdojo.com/pines).
 
+![alt text](https://github.com/marcorombach/livewire-confirm-modal/blob/main/demo.png?raw=true)
+
 ## Installation
 
 You can install the package via composer:
