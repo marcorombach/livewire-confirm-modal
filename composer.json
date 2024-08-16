@@ -1,11 +1,12 @@
 {
     "name": "marcorombach/livewire-confirm-modal",
-    "description": "This is my package livewire-confirm-modal",
+    "description": "Like the wire confirm directive but displayed as modal on your page.",
     "keywords": [
         "marcorombach",
         "laravel",
         "livewire",
-        "wire:confirm",
+        "wire",
+        "confirm",
         "tailwind",
         "livewire-confirm-modal"
     ],
