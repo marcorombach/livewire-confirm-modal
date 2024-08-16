@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/marcorombach/livewire-confirm-modal.svg?style=flat-square)](https://packagist.org/packages/marcorombach/livewire-confirm-modal)
 
 This is a simple package aiming to provide a Livewire directive like ``wire:confirm`` but without using the default javascript ``confirm()`` function.
-This is useful if you need the same style for the confirm box across different browser.
+This is useful if you need the same style for the confirm box across different browsers.
 It's also possible to apply your own style by changing the view.
 
 By default this package uses TailwindCSS to style the modal. The look of the modal was inspired by the fantastic components of [Pines UI](https://devdojo.com/pines).
@@ -32,7 +32,7 @@ content: [
     "./resources/**/*.js",
     ...
     "./vendor/marcorombach/livewire-confirm-modal/resources/views/components/*.php",
-],
+] 
 ```
 
 Optionally, you can publish the view using

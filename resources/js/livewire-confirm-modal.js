@@ -20,10 +20,9 @@ document.addEventListener('alpine:init', () => {
 })
 
 function parseMethod(rawMethod){
-    const regex = /,(?![^'"]*['"])/g
-    let method = rawMethod
-    let params = []
-    method = rawMethod.split('(')[0];
+    const regex = /,(?![^'"]*['"])/g;
+    let params = [];
+    let method = rawMethod.split('(')[0];
     let paramString = rawMethod.split('(')[1].split(')')[0];
 
     params = paramString.split(regex);
@@ -39,8 +38,7 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     let description = content.split('|')[1];
 
     const newConfirm = () => {
-        return new Promise((complete, failed)=>{
-
+        return new Promise((complete)=>{
             document.getElementById("lvcm-ok-btn").addEventListener("click", function(){
                 Alpine.store('confirmModal').hide();
                 complete(true);
