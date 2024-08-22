@@ -54,7 +54,7 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             $js =  file_get_contents(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
 
             $content[] = <<<HTML
-                <script type="module" data-navigate-once defer data-navigate-track>{{!! $js !!}}</script>
+                <script type="module" data-navigate-once defer data-navigate-track>{!! $js !!}</script>
             HTML;
 
             return implode("\n", $content);
