@@ -11,24 +11,23 @@ document.addEventListener('alpine:init', () => {
             this.show = true;
         },
         setTitle(title) {
-            this.title = title
+            this.title = title;
         },
         setDescription(description) {
-            this.description = description
+            this.description = description;
         }
     })
 })
 
 function parseMethod(rawMethod){
     const regex = /,(?![^'"]*['"])/g;
-    let params = [];
     let method = rawMethod.split('(')[0];
     let paramString = rawMethod.split('(')[1].split(')')[0];
 
-    params = paramString.split(regex);
+    let params = paramString.split(regex);
     params = params.map(str => str.replace(/^['"]|['"]$/g, '').trim());
 
-    return { method: method, params: params }
+    return { method: method, params: params };
 }
 
 Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
@@ -52,8 +51,8 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
     }
 
     let onClick = async e => {
-        e.preventDefault()
-        e.stopImmediatePropagation()
+        e.preventDefault();
+        e.stopImmediatePropagation();
 
         Alpine.store('confirmModal').setTitle(title);
         Alpine.store('confirmModal').setDescription(description);
@@ -66,9 +65,9 @@ Livewire.directive('confirm-modal', ({ el, directive, component, cleanup }) => {
         }
     }
 
-    el.addEventListener('click', onClick, { capture: true })
+    el.addEventListener('click', onClick, { capture: true });
 
     cleanup(() => {
-        el.removeEventListener('click', onClick)
+        el.removeEventListener('click', onClick);
     })
 })
