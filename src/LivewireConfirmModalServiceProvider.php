@@ -53,9 +53,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
             $js =  file_get_contents(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
 
-            $content[] = <<<HTML
+            $content[] = Blade::render(<<<HTML
                 <script type="module" data-navigate-once defer data-navigate-track>{!! $js !!}</script>
-            HTML;
+            HTML);
 
             return implode("\n", $content);
         });
