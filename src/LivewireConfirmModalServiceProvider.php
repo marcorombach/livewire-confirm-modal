@@ -38,9 +38,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
             $content = [];
 
 
-            $fullScriptPath = route('livewire-confirm-modal.scripts');
+            // $fullScriptPath = route('livewire-confirm-modal.scripts');
 
-            if (is_file(__DIR__.'/../resources/hot')) {
+            /*if (is_file(__DIR__.'/../resources/hot')) {
                 $url = rtrim(file_get_contents(__DIR__.'/../resources/hot'));
 
                 $content[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/resources/js/livewire-confirm-modal.js");
@@ -49,7 +49,13 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
                 $content[] = <<<HTML
                     <script type="module" src="{$fullScriptPath}?v={$version}" data-navigate-once defer data-navigate-track></script>
                 HTML;
-            }
+            }*/
+
+            $js = __DIR__.'/../resources/dist/livewire-confirm-modal.js';
+
+            $content[] = <<<HTML
+                <script type="module" data-navigate-once defer data-navigate-track>{{ file_get_contents($js) }}</script>
+            HTML;
 
             return implode("\n", $content);
         });
