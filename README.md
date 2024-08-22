@@ -35,6 +35,13 @@ content: [
 ] 
 ```
 
+To include the necessary scripts and the modal itself, make sure this is present in all your views that should use wire:confirm-modal
+
+```blade
+@livewireConfirmModal
+<x-livewire-confirm-modal/>
+```
+
 Optionally, you can publish the view using
 
 ```bash
