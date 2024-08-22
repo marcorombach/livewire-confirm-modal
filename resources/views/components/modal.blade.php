@@ -1,23 +1,4 @@
-<div x-data="
-Alpine.store('confirmModal', {
-        show: false,
-        title: 'default',
-        description: 'default',
-
-        hide(){
-            this.show = false;
-        },
-        present(){
-            this.show = true;
-        },
-        setTitle(title) {
-            this.title = title
-        },
-        setDescription(description) {
-            this.description = description
-        }
-    })"
-     @keydown.escape.window="$store.confirmModal.hide()"
+<div @keydown.escape.window="$store.confirmModal.hide()"
      class="relative z-50 w-auto h-auto">
     <template x-teleport="body">
         <div x-show="$store.confirmModal.show" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen" x-cloak>
