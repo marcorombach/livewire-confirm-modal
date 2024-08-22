@@ -26,9 +26,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        Route::get('_livewire-confirm-modal/scripts', function () {
+       /* Route::get('_livewire-confirm-modal/scripts', function () {
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
-        })->name('livewire-confirm-modal.scripts');
+        })->name('livewire-confirm-modal.scripts');*/
 
 
         Blade::directive('livewireConfirmModal', function () {
@@ -51,10 +51,10 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
                 HTML;
             }*/
 
-            $js = __DIR__.'/../resources/dist/livewire-confirm-modal.js';
+            $js =  file_get_contents(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
 
             $content[] = <<<HTML
-                <script type="module" data-navigate-once defer data-navigate-track>{{ file_get_contents($js) }}</script>
+                <script type="module" data-navigate-once defer data-navigate-track>{{ $js }}</script>
             HTML;
 
             return implode("\n", $content);
