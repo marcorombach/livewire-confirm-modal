@@ -1,4 +1,4 @@
-
+@livewireConfirmModal
 <div @keydown.escape.window="$store.confirmModal.hide()"
      class="relative z-50 w-auto h-auto">
     <template x-teleport="body">
