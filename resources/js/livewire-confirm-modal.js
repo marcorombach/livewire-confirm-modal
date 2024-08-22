@@ -1,4 +1,5 @@
 document.addEventListener('alpine:init', () => {
+    console.log('ALPINE INIT');
     Alpine.store('confirmModal', {
         show: false,
         title: 'default',
