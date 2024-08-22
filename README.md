@@ -7,7 +7,7 @@ This is a simple package aiming to provide a Livewire directive like ``wire:conf
 This is useful if you need the same style for the confirm box across different browsers.
 It's also possible to apply your own style by changing the view.
 
-By default this package uses TailwindCSS to style the modal. The look of the modal was inspired by the fantastic components of [Pines UI](https://devdojo.com/pines).
+By default this package uses TailwindCSS to style the modal. The look of the modal was inspired by the components of [Pines UI](https://devdojo.com/pines).
 
 ![alt text](https://github.com/marcorombach/livewire-confirm-modal/blob/main/demo.png?raw=true)
 
@@ -38,7 +38,6 @@ content: [
 To include the necessary scripts and the modal itself, make sure this is present in all your views that should use wire:confirm-modal
 
 ```blade
-@livewireConfirmModal
 <x-livewire-confirm-modal/>
 ```
 
