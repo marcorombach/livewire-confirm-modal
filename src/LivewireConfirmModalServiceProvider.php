@@ -33,9 +33,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
         Blade::directive('livewireConfirmModal', function () {
 
-            $version = InstalledVersions::getPrettyVersion('marcorombach/livewire-confirm-modal');
+            // $version = InstalledVersions::getPrettyVersion('marcorombach/livewire-confirm-modal');
 
-            $content = [];
+            // $content = [];
 
 
             // $fullScriptPath = route('livewire-confirm-modal.scripts');
@@ -53,11 +53,9 @@ class LivewireConfirmModalServiceProvider extends PackageServiceProvider
 
             $js =  file_get_contents(__DIR__.'/../resources/dist/livewire-confirm-modal.js');
 
-            $content[] = Blade::render(<<<HTML
+            return Blade::render(<<<HTML
                 <script type="module" data-navigate-once defer data-navigate-track>{!! $js !!}</script>
             HTML);
-
-            return implode("\n", $content);
         });
     }
 }
