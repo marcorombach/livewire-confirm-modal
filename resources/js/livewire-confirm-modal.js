@@ -22,8 +22,13 @@ document.addEventListener('alpine:init', () => {
 function parseMethod(rawMethod){
     const regex = /,(?![^'"]*['"])/g;
     let method = rawMethod.split('(')[0];
-    let paramString = rawMethod.split('(')[1].split(')')[0];
-    let params = paramString.split(regex);
+    let params = [];
+    try {
+        let paramString = rawMethod.split('(')[1].split(')')[0];
+        params = paramString.split(regex);
+    }catch (e) {
+        params = [];
+    }
     params = params.map(str => str.replace(/^['"]|['"]$/g, '').trim());
 
     return { method: method, params: params };
