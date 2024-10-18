@@ -1,6 +1,8 @@
 @livewireConfirmModal
+
 <div @keydown.escape.window="$store.confirmModal.hide()"
-     class="relative z-50 w-auto h-auto">
+     class="relative z-50 w-auto h-auto"
+     x-data >
     <template x-teleport="body">
         <div x-show="$store.confirmModal.show" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen" x-cloak>
             <div x-show="$store.confirmModal.show"
