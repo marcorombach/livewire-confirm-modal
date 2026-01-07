@@ -12,7 +12,7 @@
                  x-transition:leave="ease-in duration-100"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 @click="$store.confirmModal.hide()" class="absolute inset-0 w-full h-full bg-black bg-opacity-50"></div>
+                 @click="$store.confirmModal.hide()" class="absolute inset-0 w-full h-full bg-black/50"></div>
             <div x-show="$store.confirmModal.show"
                  x-trap.inert.noscroll="$store.confirmModal.show"
                  x-transition:enter="ease-out duration-100"
